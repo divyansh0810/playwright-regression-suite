@@ -1,0 +1,37 @@
+name: Daily Regression Suite
+
+on:
+  schedule:
+    - cron: "50 7 * * *"    # Runs every day at 1:30 PM IST (~8:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  regression-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pytest pytest-html playwright python-dotenv
+        playwright install
+
+    - name: Run Regression Tests
+      run: |
+        pytest -m regression --html=reports/regression_report.html --self-contained-html
+
+    - name: Upload HTML Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: regression-report
+        path: reports/regression_report.html
