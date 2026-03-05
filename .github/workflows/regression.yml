@@ -2,7 +2,7 @@ name: Daily Regression Suite
 
 on:
   schedule:
-    - cron: "50 7 * * *"    # Runs every day at 1:30 PM IST (~8:00 UTC)
+    - cron: "50 7 * * *"   # 1:20 PM IST
   workflow_dispatch:
 
 jobs:
@@ -27,6 +27,9 @@ jobs:
         playwright install
 
     - name: Run Regression Tests
+      env:
+        ERP_USER: ${{ secrets.ERP_USER }}
+        ERP_PASS: ${{ secrets.ERP_PASS }}
       run: |
         pytest -m regression --html=reports/regression_report.html --self-contained-html
 
