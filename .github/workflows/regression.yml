@@ -2,7 +2,7 @@ name: Daily Regression Suite
 
 on:
   schedule:
-    - cron: "50 7 * * *"   # 1:20 PM IST
+    - cron: "20 10 * * *"   # 3:50 PM IST
   workflow_dispatch:
 
 jobs:
