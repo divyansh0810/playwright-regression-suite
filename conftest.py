@@ -18,21 +18,9 @@ def pytest_runtest_makereport(item, call):
     if report.when == "call":
 
         error_message = ""
-        screenshot_path = ""
 
         if report.failed:
-
             error_message = report.longrepr.reprcrash.message
-
-            page = item.funcargs.get("page", None)
-
-            if page:
-                os.makedirs("reports/screenshots", exist_ok=True)
-
-                screenshot_name = f"{item.name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
-                screenshot_path = f"reports/screenshots/{screenshot_name}"
-
-                page.screenshot(path=screenshot_path)
 
         results.append({
             "Test Name": item.name,
@@ -40,8 +28,7 @@ def pytest_runtest_makereport(item, call):
             "Start Time": start_time.strftime("%H:%M:%S"),
             "End Time": end_time.strftime("%H:%M:%S"),
             "Duration (sec)": round(report.duration, 2),
-            "Error": error_message,
-            "Screenshot": screenshot_path
+            "Error": error_message
         })
 
 
