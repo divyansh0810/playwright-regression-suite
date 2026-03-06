@@ -23,6 +23,7 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install -r requirements.txt
+        playwright install --with-deps
         pip install pytest pytest-html playwright python-dotenv
         playwright install
 
