@@ -9,7 +9,7 @@ load_dotenv()
 
 def test_open_sales_order():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, slow_mo=800)
+        browser = p.chromium.launch(headless=True, slow_mo=800)
         page = browser.new_page()
         page.set_default_timeout(60000)
 
