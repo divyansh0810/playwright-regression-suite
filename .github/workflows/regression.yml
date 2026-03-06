@@ -32,7 +32,7 @@ jobs:
         ERP_USER: ${{ secrets.ERP_USER }}
         ERP_PASS: ${{ secrets.ERP_PASS }}
       run: |
-        pytest -m regression --html=reports/regression_report.html --self-contained-html
+        pytest -m regression
 
     - name: Upload Reports
       uses: actions/upload-artifact@v4
