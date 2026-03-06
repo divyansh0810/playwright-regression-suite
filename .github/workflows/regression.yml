@@ -34,8 +34,8 @@ jobs:
       run: |
         pytest -m regression --html=reports/regression_report.html --self-contained-html
 
-    - name: Upload HTML Report
+    - name: Upload Reports
       uses: actions/upload-artifact@v4
       with:
         name: regression-report
-        path: reports/regression_report.html
+        path: reports/
