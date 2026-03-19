@@ -63,6 +63,10 @@ def test_book_order_disabled_customer():
         
         page.get_by_role("button", name="Save").click()
         page.wait_for_timeout(5000)
+        page.screenshot(path="before_submit.png")
+
+# print page content (optional but powerful)
+        print(page.content())
         submit_btn = page.locator('button:has-text("Submit")')
 
 # wait for UI to settle
