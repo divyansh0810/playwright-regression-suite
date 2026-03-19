@@ -63,7 +63,17 @@ def test_book_order_disabled_customer():
         
         page.get_by_role("button", name="Save").click()
         page.wait_for_timeout(5000)
-        page.locator('button.btn-primary:has-text("Submit")').click()
+        submit_btn = page.locator('button:has-text("Submit")')
+
+# wait for UI to settle
+        page.wait_for_load_state("networkidle")
+
+# remove any overlay
+        page.wait_for_selector(".modal-backdrop", state="detached", timeout=60000)
+
+# wait for button
+        submit_btn.wait_for(state="visible", timeout=60000)
+        submit_btn.click()
         page.get_by_role("button", name="Yes").click()
         page.wait_for_timeout(3000)
         heading = page.get_by_role("heading", name= "Message").inner_text()
