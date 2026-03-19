@@ -60,6 +60,7 @@ def test_book_order_disabled_customer():
         page.get_by_role("combobox", name="Product Code").fill("M41510102")
         page.wait_for_timeout(3000)
         page.get_by_role("combobox", name="Product Code").press("Enter")
+        page.wait_for_timeout(5000)
         
         page.get_by_role("button", name="Save").click()
         page.wait_for_timeout(5000)
