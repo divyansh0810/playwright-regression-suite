@@ -72,7 +72,7 @@ def test_book_order_disabled_customer():
         page.wait_for_selector(".modal-backdrop", state="detached", timeout=60000)
 
 # wait for button
-        submit_btn.wait_for(state="visible", timeout=60000)
+        # submit_btn.wait_for(state="visible", timeout=60000)
         submit_btn.click()
         page.get_by_role("button", name="Yes").click()
         page.wait_for_timeout(3000)
