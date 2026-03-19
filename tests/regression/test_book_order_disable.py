@@ -63,7 +63,7 @@ def test_book_order_disabled_customer():
         
         page.get_by_role("button", name="Save").click()
         page.wait_for_timeout(5000)
-        page.get_by_role("button", name="Submit").click()
+        page.locator('button.btn-primary:has-text("Submit")')
         page.get_by_role("button", name="Yes").click()
         page.wait_for_timeout(2000)
         heading = page.get_by_role("heading", name= "Message").inner_text()
