@@ -46,7 +46,10 @@ def test_book_order_with_duplicate_items():
         page.locator(".btn.btn-modal-close").click()
         page.locator('input[data-fieldname="set_warehouse"]').fill("WH-MAIN - VIPL")
         page.keyboard.press("Enter")
-        
+        if page.locator(".modal-content").is_visible():
+            page.locator(".btn-modal-close").click()
+            page.wait_for_selector(".modal-backdrop", state="detached")
+            
         page.locator(".col.grid-static-col.col-xs-2.error").click()
         page.get_by_role("combobox", name="Product Code").fill("M41510102")
         page.wait_for_timeout(3000)
