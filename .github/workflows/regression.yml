@@ -40,3 +40,9 @@ jobs:
       with:
         name: regression-report
         path: reports/
+
+    - name: Upload Screenshots
+      uses: actions/upload-artifact@v4
+      with:
+        name: debug-screenshots
+        path: reports/
