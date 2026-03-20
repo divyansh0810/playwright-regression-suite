@@ -33,7 +33,7 @@ jobs:
         ERP_PASS: ${{ secrets.ERP_PASS }}
       run: |
         #pytest -s -m regression
-         pytest -s tests/test_book_order_disabled_customer.py
+         pytest -s tests/test_book_order_disabled_customer.py tests/regression/test_book_order_ydisable.py
 
     - name: Upload Reports
       if: always()
