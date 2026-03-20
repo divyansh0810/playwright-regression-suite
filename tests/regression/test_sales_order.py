@@ -5,7 +5,7 @@ import pytest
 
 load_dotenv()
 
-@pytest.mark.regression
+@pytest.mark.regressions
 
 def test_open_sales_order():
     with sync_playwright() as p:
