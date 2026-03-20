@@ -47,7 +47,10 @@ def test_book_order_enabled_customer():
         page.locator(".btn.btn-modal-close").click()
         customer_id =  page.get_by_role("combobox").nth(2).input_value()
         print(customer_id)
-        page.wait_for_timeout(3000)
+        
+        if page.locator(".modal-content").is_visible():
+            page.locator(".btn-modal-close").click()
+            page.wait_for_selector(".modal-backdrop", state="detached")
         page.screenshot(path="reports/combobox.png", full_page=True)
         page.get_by_role("combobox", name="Search or type a command").click()
         page.get_by_role("combobox", name="Search or type a command").fill("Customer List")
