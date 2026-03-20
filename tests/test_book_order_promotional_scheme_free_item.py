@@ -57,6 +57,8 @@ def test_book_order_promotional_scheme_free_item():
         page.get_by_role("combobox", name="Product Code").fill("M41510102")
         page.wait_for_timeout(3000)
         page.get_by_role("combobox", name="Product Code").press("Enter")
+        page.wait_for_timeout(3000)
+        page.screenshot(path="reports/before_qnty.png", full_page=True)
     
         page.get_by_role("textbox", name="Qty").click()
         page.get_by_role("textbox", name="Qty").fill("20")
