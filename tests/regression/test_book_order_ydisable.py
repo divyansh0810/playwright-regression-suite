@@ -11,7 +11,7 @@ load_dotenv()
 
 @pytest.mark.book_order
 @pytest.mark.regression
-def test_book_order_disabled_customer():
+def test_book_order_disabled_customer_regression():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, slow_mo=800)
         page = browser.new_page()
@@ -63,6 +63,7 @@ def test_book_order_disabled_customer():
         page.wait_for_timeout(3000)
         page.get_by_role("button", name="Save").click()
         page.wait_for_timeout(3000)
+        page.screenshot(path="reports/before_reg_submit.png", full_page=True)
         page.get_by_role("button", name="Submit").click()
         page.get_by_role("button", name="Yes").click()
         page.wait_for_timeout(3000)
