@@ -10,7 +10,7 @@ import pytest
 load_dotenv()
 
 @pytest.mark.book_order
-@pytest.mark.regression
+@pytest.mark.regressions
 def test_book_order_amount_and_quantity_verification_in_sales_order():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, slow_mo=800)
