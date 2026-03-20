@@ -48,6 +48,7 @@ def test_book_order_enabled_customer():
         customer_id =  page.get_by_role("combobox").nth(2).input_value()
         print(customer_id)
         page.wait_for_timeout(3000)
+        page.screenshot(path="reports/combobox.png", full_page=True)
         page.get_by_role("combobox", name="Search or type a command").click()
         page.get_by_role("combobox", name="Search or type a command").fill("Customer List")
         page.get_by_role("combobox", name="Search or type a command").press("Enter")
