@@ -56,7 +56,11 @@ def test_book_order_disabled_customer():
         page.locator('input[data-fieldname="set_warehouse"]').fill("WH-MAIN - VIPL")
         page.keyboard.press("Enter")
         
-        page.locator(".col.grid-static-col.col-xs-2.error").click()
+        if page.locator(".modal-content").is_visible():
+            page.locator(".btn-modal-close").click()
+            page.wait_for_selector(".modal-backdrop", state="detached")
+        
+        page.locator('.grid-row[data-idx="1"] [data-fieldname="product_code"].error.bold').click()
         page.get_by_role("combobox", name="Product Code").fill("M41510102")
         page.wait_for_timeout(3000)
         page.get_by_role("combobox", name="Product Code").press("Enter")
